@@ -1,11 +1,11 @@
 #include "SegDisplay.h"
 
-BusOut Seg1(p5, p6, p7, p8, p9, p10, p11);
-BusOut Seg2(p13, p14, p15, p16, p17, p18, p19);
+BusOut Seg1(p5, p6, p7, p8, p9, p10, p11); // a-g (no dp)
+BusOut Seg2(p13, p14, p15, p16, p17, p18, p19); // a-g (no dp)
 
 void SegInit(void) {
-    Seg1 = SegConvert(0);
-    Seg2 = SegConvert(0);
+    Seg1 = SegConvert(0); // display 0 when initialized
+    Seg2 = SegConvert(0); // display 0 when initialized
 }
 
 int SegConvert(char SegValue) {
@@ -21,7 +21,7 @@ int SegConvert(char SegValue) {
         case 7: SegByte = 0x07; break;
         case 8: SegByte = 0x7F; break;
         case 9: SegByte = 0x6F; break;
-        default: SegByte = 0x00;
+        default: SegByte = 0x00; // if not 0-9 turn off
     }
     return SegByte;
 }
